@@ -1,3 +1,6 @@
+
+[![Test](https://github.com/CATProtocol/cat-token-box/actions/workflows/ci.yml/badge.svg)](https://github.com/CATProtocol/cat-token-box/actions/workflows/ci.yml)
+
 # CAT Token Box
 
 A reference implementation of the `Covenant Attested Token (CAT)` protocol on BTC signet and Fractal, where `OP_CAT` is re-activated.
@@ -11,14 +14,14 @@ There are three major packages implementing the protocol and tools for `CAT` out
 packages
 ├── cli
 ├── common
-├── smartcontracts
+├── sdk
 └── tracker
 ```
 
 
-* `smartcontracts`
+* `sdk`
 
-Smart contracts implementing the `CAT` protocol written in [sCrypt](https://github.com/sCrypt-Inc/scrypt-ts).
+A SDK that enables the integration of CAT protocol tokens (CAT20/CAT721) into various applications.
 
 
 * `tracker`

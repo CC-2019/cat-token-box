@@ -4,12 +4,19 @@ import { TokenController } from './token.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { TokenInfoEntity } from '../../entities/tokenInfo.entity';
 import { TxOutEntity } from '../../entities/txOut.entity';
-import { BlockModule } from '../../services/block/block.module';
+import { TxEntity } from '../../entities/tx.entity';
+import { CommonModule } from '../../services/common/common.module';
+import { TokenMintEntity } from '../../entities/tokenMint.entity';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([TokenInfoEntity, TxOutEntity]),
-    BlockModule,
+    TypeOrmModule.forFeature([
+      TokenInfoEntity,
+      TxOutEntity,
+      TxEntity,
+      TokenMintEntity,
+    ]),
+    CommonModule,
   ],
   providers: [TokenService],
   controllers: [TokenController],

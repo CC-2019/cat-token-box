@@ -1,7 +1,11 @@
-import { bitcoin, testnet, regtest, Network } from 'bitcoinjs-lib/src/networks';
+import { Network, networks } from 'bitcoinjs-lib';
 
 export class Constants {
   static readonly BLOCK_PROCESSING_INTERVAL = 10000;
+
+  static readonly CACHE_MAX_SIZE = 10000;
+
+  static readonly CACHE_AFTER_N_BLOCKS = 120;
 
   static readonly TAPROOT_LOCKING_SCRIPT_LENGTH = 34;
 
@@ -29,7 +33,8 @@ export class Constants {
 
   static readonly MINTER_INPUT_WITNESS_AMOUNT_OFFSET = 6;
 
-  static readonly TOKEN_INFO_ENVELOPE = /OP_0 OP_IF 636174 OP_1 (.*?) OP_ENDIF/;
+  static readonly TOKEN_INFO_ENVELOPE =
+    /OP_0 OP_IF 636174 (OP_1|OP_2|OP_3) (.+?) OP_ENDIF/;
 
   static readonly TOKEN_AMOUNT_MAX_BYTES = 4;
 
@@ -54,12 +59,12 @@ const _network = process.env.NETWORK || 'mainnet';
 export let network: Network;
 switch (_network) {
   case 'mainnet':
-    network = bitcoin;
+    network = networks.bitcoin;
     break;
   case 'regtest':
-    network = regtest;
+    network = networks.regtest;
     break;
   default:
-    network = testnet;
+    network = networks.testnet;
     break;
 }
